@@ -1,24 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Delaunay Triangulation and Voronoi Diagrams</h1>
+      <p>The Delaunay triangulation of a set of points subdivides the polygon formed by their convex hull into a set of triangles whose circumcircles do not contain any other point in the set. As it happens, connecting the centers of those circumcircles with lines produces the Voronoi diagram for that set. Why is that? In this project, we will present a pedagogical aid that shows a dynamic Delaunay triangulation for a set of points and a toggle that will overlay or show the corresponding Voronoi diagram. We will explore the mathematics behind the connection between the two artifacts as well as some of their real-world applications. Our aid will allow viewers to visualize the connection between Delaunay triangulation and Voronoi diagrams and understand their importance.
+      </p>
+      <footer>
+        Project by Will Hoover and Max Bustillo
+      </footer>
     </div>
   );
 }
