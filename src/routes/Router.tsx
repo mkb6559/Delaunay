@@ -1,23 +1,20 @@
-import {
-    createBrowserRouter,
-} from "react-router-dom";
 import Project from "../pages/Project";
 import About from "../pages/About";
 import Sources from "../pages/Sources"
 
-const Routes = createBrowserRouter([
-    {
-        path: '/',
-        element: <Project/>,
-    },
-    {
-        path: '/about',
-        element: <About/>,
-    },
-    {
-        path: '/sources',
-        element: <Sources/>,
-    },
-]);
+interface PageProps{
+    path: string
+}
 
-export default Routes;
+const Router = (props: PageProps) => {
+    if (props.path === "sources") {
+        return <Sources />
+    } else if (props.path === "about") {
+        return <About />
+    } else {
+        return <Project />
+    }
+}
+    
+
+export default Router;
