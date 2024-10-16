@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Canvas } from "../scripts/rectangle";
 const About = () => {
-  const coords= useState<number[]>([])
+  const coords= useState<number[]>([100,80,120,100,100,100])
   return (
 
       <div className="App">
