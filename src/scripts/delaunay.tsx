@@ -42,7 +42,7 @@ export function Canvas(props: {props:[any, any]}) {
     
     console.log(delaunay.triangles);
     if (delaunay.triangles !== undefined){
-        for (let i = 0; i < delaunay.triangles.length-2; i+=4) {
+        for (let i = 0; i < delaunay.triangles.length-2; i+=3) {
             console.log("there")
             var p1 = delaunay.triangles[i]
             var p2 = delaunay.triangles[i+1]
