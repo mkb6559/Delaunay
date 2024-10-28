@@ -7,6 +7,10 @@ body {
   margin: 0 5vw;
 }
 
+canvas {
+  border: 2px solid gray;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

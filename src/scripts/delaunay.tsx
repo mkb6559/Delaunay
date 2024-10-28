@@ -71,14 +71,14 @@ export function Canvas(props: {props:[any, any],mode:[any,any]}) {
         
       }
     }
-    if (index==-1){
+    if (index === -1){
       setCoords(coords.concat([x,y]))
     }
     setSelectedPoint([x,y,index])
   };
 
   const handleMouseMove = (event: { clientX: any; clientY: any; }) => {
-    if (selectedPoint.length>2 && selectedPoint[2]!=-1) {
+    if (selectedPoint.length>2 && selectedPoint[2] !== -1) {
       console.log("moving")
       coords[selectedPoint[2]] = event.clientX
       coords[selectedPoint[2]+1]=  event.clientY
@@ -216,7 +216,7 @@ export function Canvas(props: {props:[any, any],mode:[any,any]}) {
     
   },[coords,modeType])
 
-  return <canvas width="650" height="400" ref={canvasRef} {...props} onMouseUp={UpdatePoint} onMouseMove={handleMouseMove} onMouseDown={selectPoint} />
+  return <canvas width='700' height='425' ref={canvasRef} {...props} onMouseUp={UpdatePoint} onMouseMove={handleMouseMove} onMouseDown={selectPoint} />
 }
 
 

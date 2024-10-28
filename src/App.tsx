@@ -30,7 +30,9 @@ function App() {
         </Stack>
       </Toolbar>
     </AppBar>
-    <Router path={page}/>
+    <div className='App'>
+      <Router path={page}/>
+    </div>
     </>
   );
 }
