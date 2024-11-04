@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Canvas } from "../scripts/delaunay";
+import { Canvas } from "../components/delaunay";
+import TabBox from "../components/TabBox"
 
 const Project = () => {
     
@@ -26,8 +27,7 @@ const Project = () => {
               and corresponding Voronoi diagram.
             </p>
             <div>
-            <Canvas props={coords} mode={mode}></Canvas>
-            
+              <Canvas props={coords} mode={mode}></Canvas>
             </div>
             <button type="button" onClick={handleClear}>
               Clear
@@ -35,6 +35,9 @@ const Project = () => {
             <button type="button" onClick={handleMode}>
               Switch to {otherView} view
             </button>
+            <div className="Info-Section" >
+              <TabBox />
+            </div>
         </div>
     )
 }
