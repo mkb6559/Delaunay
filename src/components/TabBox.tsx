@@ -21,7 +21,7 @@ function CustomTabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box sx={{ p: 3, overflow: 'scroll', height: 243, border: '2px solid #1976d2', borderLeft: '0.5px solid #1976d2'}}>{children}</Box>}
     </div>
   );
 }
@@ -41,9 +41,9 @@ export default function TabBox() {
   };
 
   return (
-    <Stack direction="row" sx={{ width: '100%' }} className='Info-Section'>
+    <Stack direction="row" sx={{ width: '100%', marginBottom: 5 }} className='Info-Section'>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" orientation='vertical'>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" orientation='vertical' sx={{border: '2px solid #1976d2', borderRight: 0}}>
           <Tab label="What is a Delaunay Triangulation?" {...a11yProps(0)} />
           <Tab label="What is a Voronoi Diagram?" {...a11yProps(1)} />
           <Tab label="Delaunay/Voronoi Relationships" {...a11yProps(2)} />
