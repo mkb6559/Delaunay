@@ -30,8 +30,8 @@ const Project = () => {
               and corresponding Voronoi diagram.
             </p>
             <div>
-              <Canvas props={coords} mode={mode} sizex={700} sizey={450} offsetx={0} offsety={0} circumselected={circumselected} ctrl={ctrl}></Canvas>
-              <Canvas props={coords} mode={mode2} sizex={700} sizey={450} offsetx={-700} offsety={0} circumselected={circumselected} ctrl={ctrl}></Canvas>
+              <Canvas props={coords} mode={mode} right={false} circumselected={circumselected} ctrl={ctrl}></Canvas>
+              <Canvas props={coords} mode={mode2} right={true} circumselected={circumselected} ctrl={ctrl}></Canvas>
             </div>
             <button type="button" onClick={handleClear}>
               Clear

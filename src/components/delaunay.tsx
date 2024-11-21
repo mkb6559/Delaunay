@@ -59,7 +59,7 @@ function trianglesAdjacentToTriangle(delaunay: { halfedges: { [x: string]: any; 
     return adjacentTriangles;
 }
 
-export function Canvas(props: {props:[any, any],mode:[any,any],sizex:number, sizey:number, offsetx:number,offsety:number,circumselected:[any,any], ctrl:[any,any]}) {
+export function Canvas(props: {props:[any, any],mode:[any,any], right:boolean, circumselected:[any,any], ctrl:[any,any]}) {
   
   const [coords,setCoords] = props.props
   const [modeType,setMode] = props.mode
@@ -68,15 +68,16 @@ export function Canvas(props: {props:[any, any],mode:[any,any],sizex:number, siz
   const [circumSelected,setCircumSelected] = props.circumselected
   var delaunay = new Delaunator(coords)
   const ctrl = props.ctrl[0]
-
+  const height = 0.6 * window.innerHeight
+  const width = 0.45 * window.innerWidth
 
 
   const selectPoint = (event: {
     button: number; clientX: number; clientY: number; 
 }) => {
     
-    var x = event.clientX+props.offsetx;
-    var y = event.clientY+props.offsety;
+    var x = event.clientX+(props.right ? width : 0);
+    var y = event.clientY;
 
     if (ctrl && modeType){
       for(let i = 0; i < delaunay.triangles.length-2; i+=3){
@@ -148,8 +149,8 @@ export function Canvas(props: {props:[any, any],mode:[any,any],sizex:number, siz
   }
 
   const draw = (context:CanvasRenderingContext2D, rect:DOMRect) =>{
-    const left = props.offsetx+rect.left
-    const top = props.offsety+rect.top
+    const left = (props.right ? width : 0)+rect.left
+    const top = rect.top
     
     context?.clearRect(0, 0, rect.width, rect.height);
     for (let i = 0; i < coords.length-1; i+=2) {
@@ -289,7 +290,7 @@ export function Canvas(props: {props:[any, any],mode:[any,any],sizex:number, siz
     
   },[coords,modeType,circumSelected])
 
-  return <canvas  width={props.sizex} height={props.sizey} ref={canvasRef} {...props} onMouseUp={UpdatePoint} onMouseMove={handleMouseMove} onMouseDown={selectPoint} />
+  return <canvas  width={width} height={height} ref={canvasRef} {...props} onMouseUp={UpdatePoint} onMouseMove={handleMouseMove} onMouseDown={selectPoint} />
 }
 
 
