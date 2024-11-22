@@ -2,6 +2,8 @@ import {useEffect, useRef, useState } from 'react'
 import Delaunator from 'delaunator';
 
 
+
+
 function circumcenter(a: any[],b: any[],c: any[]) : number[]{
   const ad = a[0] * a[0] + a[1] * a[1];
   const bd = b[0] * b[0] + b[1] * b[1];
@@ -68,16 +70,39 @@ export function Canvas(props: {props:[any, any],mode:[any,any], right:boolean, c
   const [circumSelected,setCircumSelected] = props.circumselected
   var delaunay = new Delaunator(coords)
   const ctrl = props.ctrl[0]
-  const height = 0.6 * window.innerHeight
-  const width = 0.45 * window.innerWidth
+  var height = 0.6 * window.innerHeight
+  var width = 0.45 * window.innerWidth
+  
+
+  window.addEventListener("resize",()=>{
+    setCoords([])
+    setCircumSelected([])
+  })
+
+  var lastYOffset = window.scrollY
+  var lastXOffset = window.scrollX
+
+  
+  const updatepoints = ()=>{
+    var diffy = -window.scrollY+lastYOffset
+    var diffx = -window.scrollX+lastXOffset
+    for(var i =0; i<coords.length-1;i+=2){
+      coords[i] += diffx
+      coords[i+1] += diffy
+    }
+    setCoords([...coords])
+    lastYOffset=window.scrollY
+    lastXOffset=window.scrollX
+  }
 
 
   const selectPoint = (event: {
     button: number; clientX: number; clientY: number; 
 }) => {
     
-    var x = event.clientX+(props.right ? width : 0);
+    var x = event.clientX-(props.right ? width : 0);
     var y = event.clientY;
+    updatepoints()
 
     if (ctrl && modeType){
       for(let i = 0; i < delaunay.triangles.length-2; i+=3){
@@ -92,9 +117,7 @@ export function Canvas(props: {props:[any, any],mode:[any,any], right:boolean, c
         const v3 = [coords[2*p3],coords[2*p3+1]]
         if (PointInTriangle(pt,v1,v2,v3)){
           
-          console.log(circumSelected)
           circumSelected[i/3] = !circumSelected[i/3]
-          console.log(circumSelected)
           setCircumSelected([...circumSelected])
         }
         
@@ -149,7 +172,7 @@ export function Canvas(props: {props:[any, any],mode:[any,any], right:boolean, c
   }
 
   const draw = (context:CanvasRenderingContext2D, rect:DOMRect) =>{
-    const left = (props.right ? width : 0)+rect.left
+    const left = (props.right ? -width : 0)+rect.left
     const top = rect.top
     
     context?.clearRect(0, 0, rect.width, rect.height);
@@ -276,7 +299,9 @@ export function Canvas(props: {props:[any, any],mode:[any,any], right:boolean, c
 
 
   useEffect(() => {
-
+    height = 0.6 * window.innerHeight
+    width = 0.45 * window.innerWidth
+    
     const canvas = canvasRef.current;
     const context = canvas?.getContext('2d');
 
@@ -289,6 +314,8 @@ export function Canvas(props: {props:[any, any],mode:[any,any], right:boolean, c
       draw(context,rect);
     
   },[coords,modeType,circumSelected])
+
+  
 
   return <canvas  width={width} height={height} ref={canvasRef} {...props} onMouseUp={UpdatePoint} onMouseMove={handleMouseMove} onMouseDown={selectPoint} />
 }
