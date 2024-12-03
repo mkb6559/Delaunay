@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Delaunay/static/css/main.c86dd850.css",
-    "main.js": "/Delaunay/static/js/main.082fa516.js",
+    "main.css": "/Delaunay/static/css/main.aa017c09.css",
+    "main.js": "/Delaunay/static/js/main.1f81588d.js",
     "static/js/453.15652676.chunk.js": "/Delaunay/static/js/453.15652676.chunk.js",
     "index.html": "/Delaunay/index.html",
-    "main.c86dd850.css.map": "/Delaunay/static/css/main.c86dd850.css.map",
-    "main.082fa516.js.map": "/Delaunay/static/js/main.082fa516.js.map",
+    "main.aa017c09.css.map": "/Delaunay/static/css/main.aa017c09.css.map",
+    "main.1f81588d.js.map": "/Delaunay/static/js/main.1f81588d.js.map",
     "453.15652676.chunk.js.map": "/Delaunay/static/js/453.15652676.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c86dd850.css",
-    "static/js/main.082fa516.js"
+    "static/css/main.aa017c09.css",
+    "static/js/main.1f81588d.js"
   ]
 }
